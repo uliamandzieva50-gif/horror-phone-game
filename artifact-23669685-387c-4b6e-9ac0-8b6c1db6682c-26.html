@@ -1,0 +1,843 @@
+
+                        <!DOCTYPE html>
+                        <html lang="en">
+                        <head>
+                            <meta charset="UTF-8">
+                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+							<style>
+								body {
+									background-color: white; /* Ensure the iframe has a white background */
+								}
+
+								
+  body {
+    background: #000;
+    color: #0f0;
+    font-family: 'Courier New', monospace;
+    margin: 0; height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #phone {
+    background: #111;
+    border: 2px solid #0f0;
+    border-radius: 20px;
+    width: 95%;
+    max-width: 400px;
+    height: 90vh;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 15px #0f0;
+  }
+  #screen {
+    background: #000;
+    border: 1px solid #0f0;
+    flex: 1;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    font-size: 16px;
+  }
+  #numberContainer {
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  #number {
+    font-size: 28px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid #0f0;
+    background: #111;
+    color: #0f0;
+    outline: none;
+    text-align: center;
+    width: 100%;
+    max-width: 300px;
+    box-sizing: border-box;
+    letter-spacing: 4px;
+  }
+  #keypad {
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    max-width: 300px;
+  }
+  .key {
+    background: #0f0;
+    color: #000;
+    font-size: 24px;
+    border-radius: 10px;
+    padding: 15px 0;
+    text-align: center;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.2s;
+  }
+  .key:hover {
+    background: #afa;
+  }
+  .key:active {
+    background: #5a5;
+  }
+  textarea {
+    width: 100%;
+    height: 80px;
+    background: #111;
+    color: #0f0;
+    border: 2px solid #0f0;
+    border-radius: 10px;
+    padding: 10px;
+    font-family: monospace;
+    font-size: 16px;
+    margin-bottom: 10px;
+    outline: none;
+    box-sizing: border-box;
+  }
+  #inputButtons {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  button {
+    font-size: 20px;
+    padding: 15px;
+    border: none;
+    border-radius: 15px;
+    background: #0f0;
+    color: #000;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-bottom: 10px;
+  }
+  button:hover, button:active {
+    background: #afa;
+  }
+  button:disabled {
+    background: #050;
+    cursor: not-allowed;
+  }
+  .hidden {
+    display: none;
+  }
+
+
+							</style>
+                        </head>
+                        <body>
+                            <!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Хоррор Телефон — Набор кнопками, текст и микрофон</title>
+<style>
+  body {
+    background: #000;
+    color: #0f0;
+    font-family: 'Courier New', monospace;
+    margin: 0; height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #phone {
+    background: #111;
+    border: 2px solid #0f0;
+    border-radius: 20px;
+    width: 95%;
+    max-width: 400px;
+    height: 90vh;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 15px #0f0;
+  }
+  #screen {
+    background: #000;
+    border: 1px solid #0f0;
+    flex: 1;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    font-size: 16px;
+  }
+  #numberContainer {
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  #number {
+    font-size: 28px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid #0f0;
+    background: #111;
+    color: #0f0;
+    outline: none;
+    text-align: center;
+    width: 100%;
+    max-width: 300px;
+    box-sizing: border-box;
+    letter-spacing: 4px;
+  }
+  #keypad {
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    max-width: 300px;
+  }
+  .key {
+    background: #0f0;
+    color: #000;
+    font-size: 24px;
+    border-radius: 10px;
+    padding: 15px 0;
+    text-align: center;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.2s;
+  }
+  .key:hover {
+    background: #afa;
+  }
+  .key:active {
+    background: #5a5;
+  }
+  textarea {
+    width: 100%;
+    height: 80px;
+    background: #111;
+    color: #0f0;
+    border: 2px solid #0f0;
+    border-radius: 10px;
+    padding: 10px;
+    font-family: monospace;
+    font-size: 16px;
+    margin-bottom: 10px;
+    outline: none;
+    box-sizing: border-box;
+  }
+  #inputButtons {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  button {
+    font-size: 20px;
+    padding: 15px;
+    border: none;
+    border-radius: 15px;
+    background: #0f0;
+    color: #000;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-bottom: 10px;
+  }
+  button:hover, button:active {
+    background: #afa;
+  }
+  button:disabled {
+    background: #050;
+    cursor: not-allowed;
+  }
+  .hidden {
+    display: none;
+  }
+</style>
+</head>
+<body>
+
+<div id="phone">
+  <div id="screen">Введите номер и нажмите «Позвонить». Можно вводить кнопками или с клавиатуры. После звонка используйте текст или микрофон.</div>
+  
+  <div id="numberContainer">
+    <input id="number" type="text" placeholder="Номер" maxlength="15" autocomplete="off" />
+    <div id="keypad">
+      <div class="key">1</div>
+      <div class="key">2</div>
+      <div class="key">3</div>
+      <div class="key">4</div>
+      <div class="key">5</div>
+      <div class="key">6</div>
+      <div class="key">7</div>
+      <div class="key">8</div>
+      <div class="key">9</div>
+      <div class="key">←</div>
+      <div class="key">0</div>
+      <div class="key">C</div>
+    </div>
+  </div>
+
+  <button id="callBtn">📞 Позвонить</button>
+  <button id="hangupBtn" class="hidden">📴 Повесить трубку</button>
+  
+  <div id="chatContainer" class="hidden">
+    <textarea id="userInput" placeholder="Напишите сообщение или используйте микрофон..."></textarea>
+    <div id="inputButtons">
+      <button id="voiceInputBtn">🎤 Голосовой ввод</button>
+      <button id="sendBtn">📤 Отправить</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const screenDiv = document.getElementById('screen');
+  const numberInput = document.getElementById('number');
+  const keypad = document.getElementById('keypad');
+  const callBtn = document.getElementById('callBtn');
+  const hangupBtn = document.getElementById('hangupBtn');
+  const chatContainer = document.getElementById('chatContainer');
+  const userInput = document.getElementById('userInput');
+  const sendBtn = document.getElementById('sendBtn');
+  const voiceInputBtn = document.getElementById('voiceInputBtn');
+
+  let state = 'idle';
+  let currentNumber = '';
+  let recognition = null;
+  let listening = false;
+
+  // Обработка нажатий на кнопки клавиатуры
+  keypad.addEventListener('click', e => {
+    if (!e.target.classList.contains('key')) return;
+    if (state !== 'idle') return;
+
+    const key = e.target.textContent;
+    let val = numberInput.value;
+
+    if (key === 'C') {
+      numberInput.value = '';
+    } else if (key === '←') {
+      numberInput.value = val.slice(0, -1);
+    } else if (val.length < 15) {
+      numberInput.value += key;
+    }
+  });
+
+  // Функция для вывода текста на экран
+  function log(text) {
+    screenDiv.innerHTML += '<br>' + text;
+    screenDiv.scrollTop = screenDiv.scrollHeight;
+  }
+
+  // Функция озвучки текста
+  function speak(text, opts = {}) {
+    if (!window.speechSynthesis) return;
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'ru-RU';
+    utterance.rate = opts.rate || 0.8;
+    utterance.pitch = opts.pitch || 0.6;
+    utterance.volume = opts.volume || 1;
+    window.speechSynthesis.speak(utterance);
+    log('<b>' + (opts.speaker || 'ИИ') + ' говорит:</b> ' + text);
+  }
+
+  // База персонажей с ключевыми словами и ответами
+  const characters = {
+    '911': {
+      name: 'Диспетчер полиции',
+      intro: 'Диспетчер полиции. Что случилось?',
+      responses: [
+        { keywords: ['помогите', 'убийство', 'опасность', 'украли', 'вор', 'преступление', 'телефон', 'кража', 'ограбили', 'похитили', 'взяли', 'украли собаку', 'украли кота', 'украли сумку', 'украли деньги', 'украли велосипед', 'украли машину', 'взяли юбку', 'украли сумку', 'взяли ботинки', 'украли ключи', 'похитили человека', 'выкуп', 'губы брата украли', 'требуют выкуп', 'вернуть брата', 'похитили брата', 'мои губы брата украли'], 
+          reply: 'Мы уже выезжаем. Оставайтесь на месте.' },
+        { keywords: ['шутка', 'отмена', 'ничего'], 
+          reply: 'Хорошо, вызов отменён. До свидания.', hangup: true },
+        { keywords: ['пожар', 'горит', 'огонь'], 
+          reply: 'Пожарная служба уже в пути.' },
+        { keywords: ['авария', 'транспорт', 'дтп'], 
+          reply: 'Скорая помощь выехала.' },
+        { keywords: ['насилие', 'драка', 'призыв'], 
+          reply: 'Мы направляем патруль.' }
+      ],
+      defaultReply: 'Пожалуйста, опишите подробнее.'
+    },
+    '666': {
+      name: 'Голос из преисподней',
+      intro: 'Ты позвонил в ад...',
+      responses: [
+        { keywords: ['ты', 'где', 'кто'], 
+          reply: 'Ты в аду. Мы уже рядом...', pitch: 0.4 },
+        { keywords: ['помогите', 'спасти'], 
+          reply: 'Никто не услышит твой крик...', pitch: 0.3 },
+        { keywords: ['выход', 'спасти'], 
+          reply: 'Выхода нет...', pitch: 0.2 },
+        { keywords: ['привет'], 
+          reply: 'Добро пожаловать в вечность...', pitch: 0.5 }
+      ],
+      defaultReply: 'Ты проиграл...', pitch: 0.3
+    },
+    '123': {
+      name: 'Служба поддержки',
+      intro: 'Служба поддержки технологий.',
+      responses: [
+        { keywords: ['проблема', 'ошибка', 'сбой', 'не работает', 'вирус', 'хакинг', 'компьютер сломался', 'интернет не пошел', 'телефон завис', 'приложение потерял'], 
+          reply: 'Опишите подробнее.' },
+        { keywords: ['помогите', 'не работает'], 
+          reply: 'Мы уже работаем над этим.' },
+        { keywords: ['спасибо', 'благодарю'], 
+          reply: 'Рады помочь!' }
+      ],
+      defaultReply: 'Извините, я не понял.'
+    },
+    '555': {
+      name: 'Мистический голос',
+      intro: 'Ты услышал таинственный голос...',
+      responses: [
+        { keywords: ['привет', 'здравствуй'], 
+          reply: 'Приветствую тебя, странник.' },
+        { keywords: ['тайна', 'секрет'], 
+          reply: 'Некоторые тайны лучше не раскрывать.' },
+        { keywords: ['страх', 'ужас'], 
+          reply: 'Страх — лишь тень в твоём разуме.' },
+        { keywords: ['помогите'], 
+          reply: 'Я могу лишь наблюдать.' }
+      ],
+      defaultReply: 'Молчание — тоже ответ.'
+    },
+    '000': {
+      name: 'Автоответчик',
+      intro: 'Оставьте сообщение.',
+      responses: [],
+      defaultReply: 'Бип... Бип...'
+    }
+  };
+
+  // Ищем ответ персонажа по ключевым словам
+  function findResponse(character, userText) {
+    userText = userText.toLowerCase();
+    for (const resp of character.responses) {
+      for (const kw of resp.keywords) {
+        if (userText.includes(kw)) {
+          return resp;
+        }
+      }
+    }
+    return null;
+  }
+
+  // Инициализация голосового ввода
+  voiceInputBtn.onclick = () => {
+    if (listening) {
+      stopVoiceInput();
+      return;
+    }
+
+    if (!('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) || !(window.AudioContext || window.webkitAudioContext)) {
+      log('Микрофон не поддерживается в вашем браузере. Используйте текстовый ввод.');
+      return;
+    }
+
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    recognition = new SpeechRecognition();
+    recognition.lang = 'ru-RU';
+    recognition.continuous = false;
+    recognition.interimResults = false;
+
+    recognition.onstart = () => {
+      listening = true;
+      voiceInputBtn.textContent = '⏹ Остановить микрофон';
+      voiceInputBtn.style.background = '#daa';
+      log('🎤 Слушаю...');
+    };
+
+    recognition.onresult = (event) => {
+      const transcript = event.results[0][0].transcript;
+      if (transcript.trim()) {
+        userInput.value += transcript + ' ';
+        log('Распознано: ' + transcript);
+      }
+    };
+
+    recognition.onerror = (event) => {
+      log('Ошибка микрофона: ' + event.error);
+      stopVoiceInput();
+    };
+
+    recognition.onend = () => {
+      stopVoiceInput();
+    };
+
+    try {
+      navigator.mediaDevices.getUserMedia({ audio: true }).then(() => {
+        recognition.start();
+      }).catch((err) => {
+        log('Доступ к микрофону заблокирован. Разрешите в настройках браузера.');
+      });
+    } catch (err) {
+      recognition.start();
+    }
+  };
+
+  function stopVoiceInput() {
+    listening = false;
+    voiceInputBtn.textContent = '🎤 Голосовой ввод';
+    voiceInputBtn.style.background = '';
+    if (recognition) {
+      recognition.stop();
+    }
+  }
+
+  callBtn.onclick = async () => {
+    if (state !== 'idle') return;
+
+    currentNumber = numberInput.value.trim();
+    if (!currentNumber) {
+      alert('Введите номер!');
+      return;
+    }
+
+    state = 'calling';
+
+    callBtn.classList.add('hidden');
+    hangupBtn.classList.remove('hidden');
+    chatContainer.classList.remove('hidden');
+    numberInput.disabled = true;
+    screenDiv.innerHTML = '<b>Звоним на ' + currentNumber + '...</b>';
+    log('Связь установлена. Пишите или говорите.');
+
+    await new Promise(r => setTimeout(r, 1500));
+
+    const character = characters[currentNumber];
+    if (character) {
+      speak(character.intro, { speaker: character.name, pitch: 0.6 });
+    } else {
+      speak('Абонент не отвечает или номер не существует.', { speaker: 'Система' });
+    }
+  };
+
+  sendBtn.onclick = () => {
+    if (state !== 'calling' || listening) return;
+
+    const userMessage = userInput.value.trim();
+    if (!userMessage) {
+      alert('Введите сообщение!');
+      return;
+    }
+
+    log('<b>Вы:</b> ' + userMessage);
+    userInput.value = '';
+
+    const character = characters[currentNumber];
+    if (!character) {
+      speak('Абонент не отвечает.', { speaker: 'Система' });
+      return;
+    }
+
+    const response = findResponse(character, userMessage);
+    if (response) {
+      speak(response.reply, { speaker: character.name, pitch: response.pitch || 0.6 });
+      if (response.hangup) {
+        setTimeout(() => hangupBtn.click(), 3000);
+      }
+    } else {
+      speak(character.defaultReply, { speaker: character.name, pitch: character.pitch || 0.6 });
+    }
+  };
+
+  hangupBtn.onclick = () => {
+    if (state === 'idle') return;
+
+    stopVoiceInput();
+
+    state = 'idle';
+    currentNumber = '';
+    callBtn.classList.remove('hidden');
+    hangupBtn.classList.add('hidden');
+    chatContainer.classList.add('hidden');
+    numberInput.disabled = false;
+    userInput.value = '';
+    log('<b>Вызов завершён.</b>');
+  };
+</script>
+
+</body>
+</html>
+
+
+
+							<script>
+                            	
+  const screenDiv = document.getElementById('screen');
+  const numberInput = document.getElementById('number');
+  const keypad = document.getElementById('keypad');
+  const callBtn = document.getElementById('callBtn');
+  const hangupBtn = document.getElementById('hangupBtn');
+  const chatContainer = document.getElementById('chatContainer');
+  const userInput = document.getElementById('userInput');
+  const sendBtn = document.getElementById('sendBtn');
+  const voiceInputBtn = document.getElementById('voiceInputBtn');
+
+  let state = 'idle';
+  let currentNumber = '';
+  let recognition = null;
+  let listening = false;
+
+  // Обработка нажатий на кнопки клавиатуры
+  keypad.addEventListener('click', e => {
+    if (!e.target.classList.contains('key')) return;
+    if (state !== 'idle') return;
+
+    const key = e.target.textContent;
+    let val = numberInput.value;
+
+    if (key === 'C') {
+      numberInput.value = '';
+    } else if (key === '←') {
+      numberInput.value = val.slice(0, -1);
+    } else if (val.length < 15) {
+      numberInput.value += key;
+    }
+  });
+
+  // Функция для вывода текста на экран
+  function log(text) {
+    screenDiv.innerHTML += '<br>' + text;
+    screenDiv.scrollTop = screenDiv.scrollHeight;
+  }
+
+  // Функция озвучки текста
+  function speak(text, opts = {}) {
+    if (!window.speechSynthesis) return;
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'ru-RU';
+    utterance.rate = opts.rate || 0.8;
+    utterance.pitch = opts.pitch || 0.6;
+    utterance.volume = opts.volume || 1;
+    window.speechSynthesis.speak(utterance);
+    log('<b>' + (opts.speaker || 'ИИ') + ' говорит:</b> ' + text);
+  }
+
+  // База персонажей с ключевыми словами и ответами
+  const characters = {
+    '911': {
+      name: 'Диспетчер полиции',
+      intro: 'Диспетчер полиции. Что случилось?',
+      responses: [
+        { keywords: ['помогите', 'убийство', 'опасность', 'украли', 'вор', 'преступление', 'телефон', 'кража', 'ограбили', 'похитили', 'взяли', 'украли собаку', 'украли кота', 'украли сумку', 'украли деньги', 'украли велосипед', 'украли машину', 'взяли юбку', 'украли сумку', 'взяли ботинки', 'украли ключи', 'похитили человека', 'выкуп', 'губы брата украли', 'требуют выкуп', 'вернуть брата', 'похитили брата', 'мои губы брата украли'], 
+          reply: 'Мы уже выезжаем. Оставайтесь на месте.' },
+        { keywords: ['шутка', 'отмена', 'ничего'], 
+          reply: 'Хорошо, вызов отменён. До свидания.', hangup: true },
+        { keywords: ['пожар', 'горит', 'огонь'], 
+          reply: 'Пожарная служба уже в пути.' },
+        { keywords: ['авария', 'транспорт', 'дтп'], 
+          reply: 'Скорая помощь выехала.' },
+        { keywords: ['насилие', 'драка', 'призыв'], 
+          reply: 'Мы направляем патруль.' }
+      ],
+      defaultReply: 'Пожалуйста, опишите подробнее.'
+    },
+    '666': {
+      name: 'Голос из преисподней',
+      intro: 'Ты позвонил в ад...',
+      responses: [
+        { keywords: ['ты', 'где', 'кто'], 
+          reply: 'Ты в аду. Мы уже рядом...', pitch: 0.4 },
+        { keywords: ['помогите', 'спасти'], 
+          reply: 'Никто не услышит твой крик...', pitch: 0.3 },
+        { keywords: ['выход', 'спасти'], 
+          reply: 'Выхода нет...', pitch: 0.2 },
+        { keywords: ['привет'], 
+          reply: 'Добро пожаловать в вечность...', pitch: 0.5 }
+      ],
+      defaultReply: 'Ты проиграл...', pitch: 0.3
+    },
+    '123': {
+      name: 'Служба поддержки',
+      intro: 'Служба поддержки технологий.',
+      responses: [
+        { keywords: ['проблема', 'ошибка', 'сбой', 'не работает', 'вирус', 'хакинг', 'компьютер сломался', 'интернет не пошел', 'телефон завис', 'приложение потерял'], 
+          reply: 'Опишите подробнее.' },
+        { keywords: ['помогите', 'не работает'], 
+          reply: 'Мы уже работаем над этим.' },
+        { keywords: ['спасибо', 'благодарю'], 
+          reply: 'Рады помочь!' }
+      ],
+      defaultReply: 'Извините, я не понял.'
+    },
+    '555': {
+      name: 'Мистический голос',
+      intro: 'Ты услышал таинственный голос...',
+      responses: [
+        { keywords: ['привет', 'здравствуй'], 
+          reply: 'Приветствую тебя, странник.' },
+        { keywords: ['тайна', 'секрет'], 
+          reply: 'Некоторые тайны лучше не раскрывать.' },
+        { keywords: ['страх', 'ужас'], 
+          reply: 'Страх — лишь тень в твоём разуме.' },
+        { keywords: ['помогите'], 
+          reply: 'Я могу лишь наблюдать.' }
+      ],
+      defaultReply: 'Молчание — тоже ответ.'
+    },
+    '000': {
+      name: 'Автоответчик',
+      intro: 'Оставьте сообщение.',
+      responses: [],
+      defaultReply: 'Бип... Бип...'
+    }
+  };
+
+  // Ищем ответ персонажа по ключевым словам
+  function findResponse(character, userText) {
+    userText = userText.toLowerCase();
+    for (const resp of character.responses) {
+      for (const kw of resp.keywords) {
+        if (userText.includes(kw)) {
+          return resp;
+        }
+      }
+    }
+    return null;
+  }
+
+  // Инициализация голосового ввода
+  voiceInputBtn.onclick = () => {
+    if (listening) {
+      stopVoiceInput();
+      return;
+    }
+
+    if (!('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) || !(window.AudioContext || window.webkitAudioContext)) {
+      log('Микрофон не поддерживается в вашем браузере. Используйте текстовый ввод.');
+      return;
+    }
+
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    recognition = new SpeechRecognition();
+    recognition.lang = 'ru-RU';
+    recognition.continuous = false;
+    recognition.interimResults = false;
+
+    recognition.onstart = () => {
+      listening = true;
+      voiceInputBtn.textContent = '⏹ Остановить микрофон';
+      voiceInputBtn.style.background = '#daa';
+      log('🎤 Слушаю...');
+    };
+
+    recognition.onresult = (event) => {
+      const transcript = event.results[0][0].transcript;
+      if (transcript.trim()) {
+        userInput.value += transcript + ' ';
+        log('Распознано: ' + transcript);
+      }
+    };
+
+    recognition.onerror = (event) => {
+      log('Ошибка микрофона: ' + event.error);
+      stopVoiceInput();
+    };
+
+    recognition.onend = () => {
+      stopVoiceInput();
+    };
+
+    try {
+      navigator.mediaDevices.getUserMedia({ audio: true }).then(() => {
+        recognition.start();
+      }).catch((err) => {
+        log('Доступ к микрофону заблокирован. Разрешите в настройках браузера.');
+      });
+    } catch (err) {
+      recognition.start();
+    }
+  };
+
+  function stopVoiceInput() {
+    listening = false;
+    voiceInputBtn.textContent = '🎤 Голосовой ввод';
+    voiceInputBtn.style.background = '';
+    if (recognition) {
+      recognition.stop();
+    }
+  }
+
+  callBtn.onclick = async () => {
+    if (state !== 'idle') return;
+
+    currentNumber = numberInput.value.trim();
+    if (!currentNumber) {
+      alert('Введите номер!');
+      return;
+    }
+
+    state = 'calling';
+
+    callBtn.classList.add('hidden');
+    hangupBtn.classList.remove('hidden');
+    chatContainer.classList.remove('hidden');
+    numberInput.disabled = true;
+    screenDiv.innerHTML = '<b>Звоним на ' + currentNumber + '...</b>';
+    log('Связь установлена. Пишите или говорите.');
+
+    await new Promise(r => setTimeout(r, 1500));
+
+    const character = characters[currentNumber];
+    if (character) {
+      speak(character.intro, { speaker: character.name, pitch: 0.6 });
+    } else {
+      speak('Абонент не отвечает или номер не существует.', { speaker: 'Система' });
+    }
+  };
+
+  sendBtn.onclick = () => {
+    if (state !== 'calling' || listening) return;
+
+    const userMessage = userInput.value.trim();
+    if (!userMessage) {
+      alert('Введите сообщение!');
+      return;
+    }
+
+    log('<b>Вы:</b> ' + userMessage);
+    userInput.value = '';
+
+    const character = characters[currentNumber];
+    if (!character) {
+      speak('Абонент не отвечает.', { speaker: 'Система' });
+      return;
+    }
+
+    const response = findResponse(character, userMessage);
+    if (response) {
+      speak(response.reply, { speaker: character.name, pitch: response.pitch || 0.6 });
+      if (response.hangup) {
+        setTimeout(() => hangupBtn.click(), 3000);
+      }
+    } else {
+      speak(character.defaultReply, { speaker: character.name, pitch: character.pitch || 0.6 });
+    }
+  };
+
+  hangupBtn.onclick = () => {
+    if (state === 'idle') return;
+
+    stopVoiceInput();
+
+    state = 'idle';
+    currentNumber = '';
+    callBtn.classList.remove('hidden');
+    hangupBtn.classList.add('hidden');
+    chatContainer.classList.add('hidden');
+    numberInput.disabled = false;
+    userInput.value = '';
+    log('<b>Вызов завершён.</b>');
+  };
+
+
+							</script>
+                        </body>
+                        </html>
+                    
